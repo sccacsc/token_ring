@@ -35,10 +35,25 @@ go run tokenring.go <number_of_nodes>
 ## Пример вывода
 
 ```
-[Main] sending initial token → 4
 [Node 2] received token: data="initial message" ttl=4
+[Node 2] forwarding token
+[Node 3] received token: data="initial message" ttl=3
 [Node 3] forwarding token
+[Node 4] received token: data="initial message" ttl=2
 [Node 4] token accepted: "initial message"
+[Node 4] generated new token → 1
+[Node 1] received token: data="msg from 4 to 1" ttl=4
+[Node 1] token accepted: "msg from 4 to 1"
+[Node 1] generated new token → 3
+[Node 2] received token: data="msg from 1 to 3" ttl=4
+[Node 2] forwarding token
+[Node 3] received token: data="msg from 1 to 3" ttl=3
+[Node 3] token accepted: "msg from 1 to 3"
+[Node 3] generated new token → 2
+[Node 4] received token: data="msg from 3 to 2" ttl=2
+[Node 4] forwarding token
+[Node 1] received token: data="msg from 3 to 2" ttl=1
+[Node 1] token expired
 
 [Main] sending initial token → 2
 [Node 2] received token: data="initial message" ttl=2
@@ -48,4 +63,5 @@ go run tokenring.go <number_of_nodes>
 [Node 1] token accepted: "msg from 2 to 1"
 [Node 1] generated new token → 1
 [Node 2] received token: data="msg from 1 to 1" ttl=1
+[Node 2] token expired
 ```
