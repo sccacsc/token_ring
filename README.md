@@ -31,9 +31,10 @@
 
 ```bash
 go run tokenring.go <number_of_nodes>
-
+```
 ## Пример вывода
 
+```
 [Main] sending initial token → 4
 [Node 2] received token: data="initial message" ttl=4
 [Node 3] forwarding token
@@ -47,3 +48,4 @@ go run tokenring.go <number_of_nodes>
 [Node 1] token accepted: "msg from 2 to 1"
 [Node 1] generated new token → 1
 [Node 2] received token: data="msg from 1 to 1" ttl=1
+```
